@@ -26,8 +26,7 @@ public class AppServerServiceImpl implements AppServerService {
 			output.flush();
 
 			input = new ObjectInputStream(socket.getInputStream());
-			response = (MemberResponse) input.readObject();
-			return response;
+			return callBack.callBack(input.readObject());
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
